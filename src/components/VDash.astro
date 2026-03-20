@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"svg"> {}
+
+const { class: className = "", ...props } = Astro.props;
+---
+
+<svg
+  width="2"
+  height="100%"
+  xmlns="http://www.w3.org"
+  style="margin-right: 20px;"
+  {...props}
+  class:list={["w-full", className]}
+>
+  <line
+    x1="3"
+    y1="0"
+    x2="3"
+    y2="100%"
+    stroke={props.color || "#dedede"}
+    stroke-width="1"
+    stroke-dasharray="15, 12"
+    stroke-linecap="square"></line>
+</svg>

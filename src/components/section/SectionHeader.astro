@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"header"> {}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<header
+  {...props}
+  class:list={["absolute h-full left-0 top-0 -translate-x-full min-w-50", className]}
+>
+  <slot />
+</header>

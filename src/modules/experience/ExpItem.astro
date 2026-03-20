@@ -1,0 +1,35 @@
+---
+import Card from "../../components/Card.astro";
+
+interface Props {
+  period: string;
+  role: string;
+  enterprise: string;
+  actions: string[];
+  tools: string[];
+}
+
+const { period, role, enterprise, actions, tools } = Astro.props;
+---
+
+<Card as="li" class="group gap-4 flex relative">
+  <div class="flex-1 text-gray-500 text-sm">
+    <span>{period}</span><br />
+    <span class="text-sm text-blue-800">{enterprise}</span>
+  </div>
+  <div class="flex flex-col flex-2 gap-2">
+    <h3 class="font-semibold text-sm">
+      {role}
+    </h3>
+    <!-- <ul class="list-disc list-inside text-gray-700 text-sm mb-4">
+      {actions.map((action, index) => <li class="text-sm">{action}</li>)}
+    </ul> -->
+    {
+      tools.length > 0 && (
+        <div class="tools text-gray-600 text-sm">
+          <span>{tools.join(" · ")}</span>
+        </div>
+      )
+    }
+  </div>
+</Card>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  id?: number;
+  to: string;
+  class?: string;
+}
+
+const { to, class: className = "", id = 0 } = Astro.props;
+---
+
+<a
+  href={to}
+  target="_blank"
+  class:list={[
+    "group w-full flex justify-center items-center rounded-lg hover:bg-stone-500/20 hover:scale-125 transition-transform duration-200 py-2 px-2",
+    className,
+    id % 2 ? "hover:rotate-12" : "hover:-rotate-12",
+  ]}
+>
+  <slot />
+</a>
