@@ -6,6 +6,6 @@ interface Props extends HTMLAttributes<"div"> {}
 const { class: className, ...props } = Astro.props;
 ---
 
-<div {...props} class:list={["w-full relative", className]}>
+<div {...props} class:list={["w-full relative group", className]}>
   <slot />
 </div>

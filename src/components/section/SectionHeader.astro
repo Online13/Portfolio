@@ -8,7 +8,7 @@ const { class: className, ...props } = Astro.props;
 
 <header
   {...props}
-  class:list={["absolute h-full left-0 top-0 -translate-x-full min-w-50", className]}
+  class:list={["md:absolute pb-4 md:h-full md:left-0 md:top-0 md:-translate-x-full min-w-50", className]}
 >
   <slot />
 </header>

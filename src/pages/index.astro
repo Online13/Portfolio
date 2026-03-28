@@ -8,7 +8,6 @@ import AboutSection from "../modules/about/AboutSection.astro";
 import SectionTitle from "../components/section/SectionTitle.astro";
 import SectionContent from "../components/section/SectionContent.astro";
 import SectionHeader from "../components/section/SectionHeader.astro";
-import VDash from "../components/VDash.astro";
 import HDash from "../components/HDash.astro";
 import Section from "../components/section/Section.astro";
 ---
@@ -20,10 +19,14 @@ import Section from "../components/section/Section.astro";
     <!-- <HDash class="absolute left-0 top-0 mt-58" /> -->
     <div class="w-full pl-4 relative">
       <div class="flex justify-center">
-        <HDash class="w-full absolute top-55" />
-        <div class="w-full max-w-160 flex flex-col items-center relative pb-4">
-          <VDash class="absolute -left-5 top-0" />
-          <div class="w-full h-60"></div>
+        <div
+          class="w-full max-w-160 flex flex-col items-center pt-60 relative pb-4"
+        >
+          <div class="w-full pb-16">
+            <h1 class="text-3xl font-bold">Nekena 
+              <span class="bg-black text-white">Rayane</span>.
+            </h1>
+          </div>
           <div class="w-full space-y-10 relative">
             <Section>
               <SectionHeader>

@@ -5,6 +5,10 @@
   --font-inter: "Inter", sans-serif; 
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   width: 100%;
   overflow-x: hidden;
@@ -12,6 +16,11 @@ html, body {
 
 * {
   font-family: 'Inter';
+}
+
+*::selection {
+  background-color: black;
+  color: white;
 }
 
 b {
