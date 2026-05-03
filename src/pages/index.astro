@@ -1,71 +1,40 @@
 ---
 import "../styles/global.css";
 import MainLayout from "../layouts/MainLayout.astro";
-import ExpSection from "../modules/experience/ExpSection.astro";
-import EducationSection from "../modules/education/EducationSection.astro";
-import SkillSection from "../modules/skill/SkillSection.astro";
 import AboutSection from "../modules/about/AboutSection.astro";
-import SectionTitle from "../components/section/SectionTitle.astro";
-import SectionContent from "../components/section/SectionContent.astro";
-import SectionHeader from "../components/section/SectionHeader.astro";
-import HDash from "../components/HDash.astro";
-import Section from "../components/section/Section.astro";
+import ActiveProjectSection from "../modules/project/ActiveProjectSection.astro";
+import PastProjectSection from "../modules/project/PastProjectSection.astro";
+import BlogSection from "../modules/blog/BlogSection.astro";
 ---
 
 <MainLayout title="Rayane">
   <div
     class="w-full flex flex-col items-center [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
   >
-    <!-- <HDash class="absolute left-0 top-0 mt-58" /> -->
-    <div class="w-full pl-4 relative">
-      <div class="flex justify-center">
+    <div class="w-full relative">
+      <div class="flex justify-center pb-12">
         <div
-          class="w-full max-w-160 flex flex-col items-center pt-60 relative pb-4"
+          class="w-full flex flex-col items-center max-w-160 pt-52 relative pb-4"
         >
-          <div class="w-full pb-16">
-            <h1 class="text-3xl font-bold">Nekena 
-              <span class="bg-black text-white">Rayane</span>.
-            </h1>
-          </div>
-          <div class="w-full space-y-10 relative">
-            <Section>
-              <SectionHeader>
-                <SectionTitle> About </SectionTitle>
-              </SectionHeader>
-              <SectionContent>
-                <AboutSection />
-              </SectionContent>
-            </Section>
-            <Section>
-              <SectionHeader>
-                <SectionTitle> Experience </SectionTitle>
-              </SectionHeader>
-              <SectionContent>
-                <ExpSection />
-              </SectionContent>
-            </Section>
-            <Section>
-              <SectionHeader>
-                <SectionTitle> Education </SectionTitle>
-              </SectionHeader>
-              <SectionContent>
-                <EducationSection />
-              </SectionContent>
-            </Section>
-            <Section>
-              <SectionHeader>
-                <SectionTitle> Skills </SectionTitle>
-              </SectionHeader>
-              <SectionContent>
-                <SkillSection />
-              </SectionContent>
-            </Section>
+          <div class="w-full space-y-16 relative">
+            <div class="w-full relative group space-y-1">
+              <h1 class="text-2xl font-bold">
+                Nekena
+                <span class="">Rayane</span>.
+              </h1>
+              <p class="text-gray-700">
+                Software engineer / React Native enthusiast
+              </p>
+            </div>
+            <AboutSection />
+            <ActiveProjectSection />
+            <PastProjectSection  />
+            <BlogSection  />
           </div>
         </div>
       </div>
-      <HDash />
-      <div class="w-full flex justify-center pt-4">
-        <div class="w-full max-w-160 pb-24">
+      <div class="w-full flex justify-center py-8 bg-black text-white">
+        <div class="w-full max-w-160">
           <p class="text-sm">
             © This site was designed and developed by @Rayane
           </p>
@@ -74,198 +43,3 @@ import Section from "../components/section/Section.astro";
     </div>
   </div>
 </MainLayout>
-<!-- <div class="w-full grid grid-cols-14 grid-rows-10 gap-4">
-    <div
-      class="col-span-6 row-span-2 w-full flex flex-col justify-center items-center"
-    >
-      <Card>
-        
-      </Card>
-    </div>
-    <div class="col-span-4 row-span-4">
-      <Card>
-        <div class=""></div>
-      </Card>
-    </div>
-    <div class="col-span-4 row-span-4">
-      <Card>
-        <div class=""></div>
-      </Card>
-    </div>
-    <div class="col-span-6 row-span-1">
-      <Card />
-    </div>
-    <div class="col-span-6 row-span-4">
-      <Card>
-        <div class=""></div>
-      </Card>
-    </div>
-    <div class="col-span-8 row-span-2">
-      <Card>
-        <div class="w-full h-full">
-          <div class="space-y-4">
-            <div class="flex flex-col">
-              <h2 class="text-2xl lg:text-3xl font-semibold">
-                Let's make something <br />
-                amazing{" "}
-                <span class="text-[hsl(230,100%,50%)]">together</span>.
-              </h2>
-            </div>
-            <p class="text-base max-w-md">
-              Want to work together? I probably do, too. Tell me about{" "}
-              <span class="underline cursor-pointer hover:text-blue-700">
-                yourself
-              </span>
-              ,{" "}
-              <span class="underline cursor-pointer hover:text-blue-700">
-                your project
-              </span>
-              , or just drop me{" "}
-              <span class="underline cursor-pointer hover:text-blue-700">
-                a line and say hello
-              </span>
-              .
-            </p>
-            <div class="flex items-center gap-4">
-              <div>
-<Button onClick={handleOpenContactForm}>
-                  <span>Contact me</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    class="w-5 h-5"
-                  >
-                    <path
-                      d="M9.912 12H4L2.023 4.135A.662.662 0 0 1 2 3.995c-.022-.721.772-1.221 1.46-.891L22 12 3.46 20.896c-.68.327-1.464-.159-1.46-.867a.66.66 0 0 1 .033-.186L3.5 15"
-                    ></path>
-                  </svg>
-                </Button>
-<div class=""></div>
-
-<div class="col-span-6 row-span-4">
-  <Card>
-    <div class=""></div>
-  </Card>
-</div>
-<div class="col-span-6 row-span-4">
-  <Card>
-    <div class=""></div>
-  </Card>
-</div>
-<div class="col-span-6 row-span-4">
-  <Card>
-    <div class=""></div>
-  </Card>
-</div>
-<div class="col-span-6 row-span-4">
-  <Card>
-    <div class=""></div>
-  </Card>
-</div>
--->
-
-<!-- <div class="w-full grid grid-cols-14 grid-rows-4">
-    <div
-      class="col-span-6 w-full h-80 flex flex-col justify-center items-center"
-    >
-      <Card>
-        <div class="max-w-130 w-full grid gap-4">
-          <div class="flex flex-row items-center gap-8">
-            <div
-              class="w-20 h-20 rounded-full bg-center bg-cover bg-[url(https://rayane-nekena.is-a.dev/assets/profile-8952f84b.webp)]"
-            >
-            </div>
-            <h1 class="text-3xl font-medium">
-              Hi, I'm Rayane and <br /> I'm a Software engineer.
-            </h1>
-          </div>
-          <p class="max-w-140 text-xl text-gray-700">
-            Creating software that is simple, functional, and visually
-            appealing, with a focus on smooth user experiences.
-          </p>
-        </div>
-      </Card>
-    </div>
-    <div
-      class="border-r border-b border-gray-300 col-span-8 flex justify-center items-center"
-    >
-    </div>
-  </div>
-  <div
-    class="w-full h-full flex justify-center items-center border-b border-be-gray-300 py-12"
-  >
-    <div class="grid gap-4">
-      <h2 class="text-2xl font-medium">About.</h2>
-      <div class="max-w-170 w-full text-xl text-gray-700 grid gap-4">
-        <p>
-          I'm an independent developer specializing in software engineering and
-          artificial intelligence, with a focus on natural language processing
-          (NLP).
-        </p>
-        <p>
-          Over the years, I've had the privilege of working on diverse projects,
-          from creating mobile applications for ministries in Madagascar to
-          redesigning applications and improving their architecture for better
-          scalability. Recently, I've been focusing on crafting intuitive
-          interfaces that enhance user experiences, while also diving deeper
-          into research and development in NLP to address complex problems and
-          create innovative solutions.
-        </p>
-        <p>
-          Thanks for visiting—feel free to reach out! I'm always open to
-          collaborating and exchanging ideas.
-        </p>
-      </div>
-    </div>
-  </div> -->
-
-<!-- <div class="flex flex-col gap-6">
-        <h2
-          class="overflow-hidden flex items-center lg:text-2xl font-semibold"
-        >
-          Services
-        </h2>
-        <div class="w-full">
-          <ServiceCard>
-            <ServiceCardHeader>
-              <ServiceCardTitle> Engineering </ServiceCardTitle>
-              <ServiceCardDescription>
-                Providing smart solutions from planning to execution for
-                technical projects.
-              </ServiceCardDescription>
-            </ServiceCardHeader>
-            <ServiceCardAction>
-              <ArrowRight />
-            </ServiceCardAction>
-          </ServiceCard>
-          <ServiceCard>
-            <ServiceCardHeader>
-              <ServiceCardTitle> Design </ServiceCardTitle>
-              <ServiceCardDescription>
-                I craft cohesive design systems and intuitive UI/UX for
-                seamless, user-friendly experiences.
-              </ServiceCardDescription>
-            </ServiceCardHeader>
-            <ServiceCardAction>
-              <ArrowRight />
-            </ServiceCardAction>
-          </ServiceCard>
-          <ServiceCard>
-            <ServiceCardHeader>
-              <ServiceCardTitle> Modelisation </ServiceCardTitle>
-              <ServiceCardDescription>
-                Utilizing AI and mathematical models to analyze data, predict
-                behaviors, and optimize processes.
-              </ServiceCardDescription>
-            </ServiceCardHeader>
-            <ServiceCardAction>
-              <ArrowRight />
-            </ServiceCardAction>
-          </ServiceCard>
-        </div>
-      </div> -->
