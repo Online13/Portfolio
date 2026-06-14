@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("articles");
+---
+
+<div class="w-full">
+	<h2 class="flex items-center text-lg font-semibold text-black">Blog</h2>
+	{
+		articles.length > 0 ? (
+			<div>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+				quisquam assumenda. Asperiores odit fugiat velit doloremque
+				exercitationem saepe minima, dolorum iusto minus illo aperiam amet
+				accusantium ullam nisi vitae iste!
+			</div>
+		) : (
+			<div class="w-full flex flex-col gap-4 justify-center items-center min-h-52">
+				<svg
+					fill="#000000"
+					width="60px"
+					height="60px"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path d="M5,22H19a3,3,0,0,0,3-3V9a3,3,0,0,0-3-3H17V4a2,2,0,0,0-2-2H9A2,2,0,0,0,7,4V6H5A3,3,0,0,0,2,9V19A3,3,0,0,0,5,22ZM9,4h6V6H9ZM4,9A1,1,0,0,1,5,8H19a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1Z" />
+				</svg>
+				<p class="text-sm">Coming soon...</p>
+			</div>
+		)
+	}
+</div>

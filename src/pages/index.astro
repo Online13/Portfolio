@@ -1,58 +1,29 @@
 ---
 import "../styles/global.css";
-import MainLayout from "../layouts/MainLayout.astro";
-import AboutSection from "../modules/about/AboutSection.astro";
-import ActiveProjectSection from "../modules/project/ActiveProjectSection.astro";
-import PastProjectSection from "../modules/project/PastProjectSection.astro";
-import BlogSection from "../modules/blog/BlogSection.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import AboutSection from "@/modules/about/AboutSection.astro";
+import BlogSection from "@/modules/blog/components/BlogSection.astro";
+import ActiveProjectSection from "@/modules/project/components/ActiveProjectSection.astro";
+import Footer from "@/modules/shared/components/Footer.astro";
 ---
 
 <MainLayout title="Rayane">
-  <div
-    class="w-full flex flex-col items-center [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
-  >
-    <div class="fixed bottom-0 right-0 blur-md opacity-80">
-      <svg
-        width="499"
-        height="363"
-        viewBox="0 0 499 363"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M6.6366 166.127L97.3048 75.4591C99.3957 73.2941 101.897 71.5673 104.662 70.3793C107.428 69.1914 110.402 68.5661 113.412 68.5399C116.422 68.5138 119.406 69.0873 122.192 70.227C124.978 71.3667 127.509 73.0498 129.637 75.1781C131.765 77.3064 133.448 79.8372 134.588 82.6229C135.728 85.4086 136.301 88.3934 136.275 91.4031C136.249 94.4128 135.624 97.3871 134.436 100.153C133.248 102.918 131.521 105.419 129.356 107.51L54.7134 182.153L129.356 256.795C131.521 258.886 133.248 261.388 134.436 264.153C135.624 266.918 136.249 269.893 136.275 272.903C136.301 275.912 135.728 278.897 134.588 281.683C133.448 284.468 131.765 286.999 129.637 289.128C127.509 291.256 124.978 292.939 122.192 294.079C119.406 295.218 116.422 295.792 113.412 295.766C110.402 295.74 107.428 295.114 104.662 293.926C101.897 292.738 99.3957 291.011 97.3048 288.847L6.6366 198.178C2.38719 193.928 0 188.163 0 182.153C0 176.142 2.38719 170.378 6.6366 166.127ZM401.36 75.4591C399.269 73.2941 396.768 71.5673 394.003 70.3793C391.237 69.1914 388.263 68.5661 385.253 68.5399C382.244 68.5138 379.259 69.0873 376.473 70.227C373.687 71.3667 371.157 73.0498 369.028 75.1781C366.9 77.3064 365.217 79.8372 364.077 82.6229C362.937 85.4086 362.364 88.3934 362.39 91.4031C362.416 94.4128 363.042 97.3871 364.229 100.153C365.417 102.918 367.144 105.419 369.309 107.51L443.952 182.153L369.309 256.795C367.144 258.886 365.417 261.388 364.229 264.153C363.042 266.918 362.416 269.893 362.39 272.903C362.364 275.912 362.937 278.897 364.077 281.683C365.217 284.468 366.9 286.999 369.028 289.128C371.157 291.256 373.687 292.939 376.473 294.079C379.259 295.218 382.244 295.792 385.253 295.766C388.263 295.74 391.237 295.114 394.003 293.926C396.768 292.738 399.269 291.011 401.36 288.847L492.029 198.178C496.278 193.928 498.665 188.163 498.665 182.153C498.665 176.142 496.278 170.378 492.029 166.127L401.36 75.4591ZM272.884 17.2728L182.215 334.611C180.565 340.388 181.276 346.585 184.191 351.838C187.107 357.091 191.989 360.972 197.765 362.628C199.796 363.189 201.892 363.478 203.999 363.489C208.924 363.485 213.715 361.877 217.645 358.908C221.576 355.939 224.432 351.77 225.782 347.033L316.45 29.6943C317.395 26.7963 317.745 23.7375 317.481 20.7009C317.217 17.6642 316.343 14.7121 314.911 12.021C313.479 9.33 311.52 6.95535 309.149 5.03913C306.779 3.12291 304.046 1.7045 301.115 0.868719C298.183 0.0329397 295.113 -0.203029 292.089 0.174928C289.064 0.552885 286.147 1.53701 283.511 3.06842C280.876 4.59983 278.576 6.64707 276.75 9.0877C274.924 11.5283 273.609 14.3122 272.884 17.2728Z"
-          fill="#E9E9E9"></path>
-      </svg>
-    </div>
-    <div class="w-full relative">
-      <div class="flex justify-center pb-12">
-        <div
-          class="w-full flex flex-col items-center max-w-160 pt-52 relative pb-4"
-        >
-          <div class="w-full space-y-16 relative">
-            <div class="w-full relative group space-y-1">
-              <h1 class="text-2xl font-bold">
-                Nekena
-                <span class="">Rayane</span>.
-              </h1>
-              <p class="text-gray-700">
-                Software engineer / React Native enthusiast
-              </p>
-            </div>
-            <AboutSection />
-            <ActiveProjectSection />
-            <!-- <PastProjectSection /> -->
-            <BlogSection />
-          </div>
-        </div>
-      </div>
-      <div class="w-full flex justify-center py-8 bg-black text-white">
-        <div class="w-full max-w-160">
-          <p class="text-sm">
-            © This site was designed and developed by @Rayane
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div
+		class="w-full flex flex-col items-center [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
+	>
+		<div class="w-full relative z-20">
+			<div class="flex justify-center pb-12">
+				<div
+					class="w-full flex flex-col items-center max-w-160 pt-30 relative pb-4"
+				>
+					<div class="w-full space-y-16 relative">
+						<AboutSection />
+						<ActiveProjectSection />
+						<BlogSection />
+					</div>
+				</div>
+			</div>
+			<Footer />
+		</div>
+	</div>
 </MainLayout>

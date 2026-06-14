@@ -1,0 +1,15 @@
+{
+	"title": "Backend Studio",
+	"slug": "backend-studio",
+	"description": "A modern backend development studio for building scalable APIs.",
+	"full_description": "Backend studio is a robust suite designed to bootstrap, test, and containerize modular microservices. Integrated with modern developer tools, schema builders, and high-performance routing templates.",
+	"technologies": [
+		"Node.js",
+		"Express",
+		"TypeScript",
+		"Docker",
+		"PostgreSQL",
+		"Redis"
+	],
+	"link": "https://github.com/backend-studio"
+}
