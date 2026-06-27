@@ -9,22 +9,21 @@ import Footer from "@/modules/shared/components/Footer.astro";
 ---
 
 <MainLayout title="Rayane">
+	<Footer />
 	<div
-		class="w-full flex flex-col items-center [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
+		id="main-content"
+		class="w-full relative z-20 bg-white flex flex-col items-center"
 	>
-		<div class="w-full relative z-20">
-			<div class="flex justify-center pb-12">
-				<div
-					class="w-full flex flex-col items-center max-w-160 pt-30 relative pb-4"
-				>
-					<div class="w-full space-y-16 relative">
-						<AboutSection />
-						<ActiveProjectSection />
-						<BlogSection />
-					</div>
+		<div class="flex justify-center pb-12">
+			<div
+				class="w-full flex flex-col items-center max-w-160 pt-30 relative pb-4"
+			>
+				<div class="w-full space-y-16 relative">
+					<AboutSection />
+					<ActiveProjectSection />
+					<BlogSection />
 				</div>
 			</div>
-			<Footer />
 		</div>
 	</div>
 	<ProjectDetailModal />

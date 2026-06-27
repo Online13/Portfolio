@@ -2,12 +2,18 @@
 
 ---
 
-<dialog
+<div
 	id="project-modal"
-	class="w-full h-full p-0 bg-transparent backdrop:bg-neutral-950/20 backdrop:backdrop-blur-xs"
+	class="hidden fixed z-20 inset-0 w-screen h-screen"
 >
 	<div
-		class="relative flex flex-col gap-6 p-6 w-full max-w-lg rounded-2xl border border-neutral-200 bg-white shadow-2xl"
+		id="modal-overlay"
+		class="bg-black/5 backdrop-blur-sm fixed inset-0 w-screen h-screen z-10 cursor-pointer"
+	>
+	</div>
+	<div
+		id="modal-card"
+		class="absolute z-20 bottom-[3%] right-[3%] flex flex-col gap-6 p-4 w-full max-w-xs rounded-2xl border border-neutral-200 bg-white shadow-2xl"
 	>
 		<button
 			id="modal-close"
@@ -27,7 +33,7 @@
 
 			<h3
 				id="modal-title"
-				class="text-xl font-bold tracking-tight text-neutral-900"
+				class="text-lg font-bold tracking-tight text-neutral-900"
 			>
 				<!-- Project Title -->
 			</h3>
@@ -65,7 +71,7 @@
 		</section>
 
 		<footer
-			class="mt-2 flex items-center gap-3 border-t border-neutral-100 pt-5"
+			class="mt-2 hidden items-center gap-3 border-t border-neutral-100 pt-5"
 		>
 			<a
 				id="modal-link"
@@ -86,12 +92,28 @@
 			</button>
 		</footer>
 	</div>
-</dialog>
+</div>
 <style>
-	dialog[open] {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	#modal-card {
+		transform: translateX(110%);
+	}
+
+	#modal-card.is-entering {
+		animation: modal-enter 0.3s ease-out forwards;
+	}
+
+	#modal-card.is-leaving {
+		animation: modal-leave 0.4s ease-in forwards;
+	}
+
+	@keyframes modal-enter {
+		from { transform: translateX(110%); }
+		to { transform: translateX(0); }
+	}
+
+	@keyframes modal-leave {
+		from { transform: translateX(0); }
+		to { transform: translateX(110%); }
 	}
 </style>
 <script>
@@ -107,6 +129,7 @@
 	function openModal(project: Project) {
 		const modal = document.getElementById("project-modal");
 
+		const modalOverlay = document.getElementById("modal-overlay");
 		const closeBtn = document.getElementById("modal-close");
 		const modalTitle = document.getElementById("modal-title");
 		const modalDescription = document.getElementById("modal-description");
@@ -133,15 +156,40 @@
 		}
 
 		// Show modal
-		if (modal && modal instanceof HTMLDialogElement) {
-			modal.showModal();
+		if (modal && modal instanceof HTMLDivElement) {
+			const modalCard = document.getElementById("modal-card");
+			const modalOverlay = document.getElementById("modal-overlay");
+
+			modalCard?.classList.remove("is-leaving");
+			modal.classList.remove("hidden");
+			// Force reflow so the entering animation restarts cleanly
+			modalCard?.getBoundingClientRect();
+			modalCard?.classList.add("is-entering");
 
 			if (closeBtn) {
-				closeBtn.addEventListener("click", () => {
-					modal.close();
-				});
+				closeBtn.addEventListener("click", () => closeModal(modal), { once: true });
+			}
+			if (modalOverlay) {
+				modalOverlay.addEventListener("click", () => closeModal(modal), { once: true });
 			}
 		}
+	}
+
+	function closeModal(modal: HTMLDivElement) {
+		const modalCard = document.getElementById("modal-card");
+		if (!modalCard) return;
+
+		modalCard.classList.remove("is-entering");
+		modalCard.classList.add("is-leaving");
+
+		modalCard.addEventListener(
+			"animationend",
+			() => {
+				modal.classList.add("hidden");
+				modalCard.classList.remove("is-leaving");
+			},
+			{ once: true }
+		);
 	}
 
 	const projectItems = document.querySelectorAll(".project-item");

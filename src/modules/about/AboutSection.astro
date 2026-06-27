@@ -9,53 +9,50 @@ const currentMonth = now.getMonth() + 1;
 const currentYear = now.getFullYear();
 
 const experienceYears =
-  currentYear - startYear + (currentMonth >= startMonth ? 0 : -1);
+	currentYear - startYear + (currentMonth >= startMonth ? 0 : -1);
 ---
 
 <div class="w-full relative group space-y-1">
-  <h1 class="text-2xl font-bold">
-    Nekena
-    <span class="">Rayane</span>.
-  </h1>
-  <p class="text-gray-700">Software engineer / React Native enthusiast</p>
+	<h1 class="text-2xl font-bold">Nekena Rayane</h1>
+	<p class="text-gray-700">Software engineer / React Native enthusiast</p>
 </div>
 <div class="space-y-4 text-gray-600">
-  <div class="max-w-130 w-full">
-    <span class="max-w-140">
-      <b>Hi</b>, I’m <img
-        src="https://rayane-nekena.is-a.dev/assets/profile-8952f84b.webp"
-        alt="profile picture"
-        class="inline shrink-0 w-6 h-6 bg-center bg-cover"
-      />
-      <b>Rayane</b>. Born and based in Antananarivo, Madagascar. Curious by
-      nature, I enjoy exploring how things are built and making them better.
-    </span>
-  </div>
-  <div class="max-w-130 w-full">
-    <span class="max-w-140">
-      I’m a <b>software engineer</b> with {experienceYears} years of experience <b
-        >building web and mobile applications</b
-      >. I focus on scalable systems, clean architecture, and performance.
-    </span>
-  </div>
-  <div class="max-w-130 w-full">
-    <span class="max-w-140">
-      Recently, I’ve been focusing on mobile applications with <b
-        >React Native</b
-      >. I work as a consultant at <b>Itwedo</b> and build a personal project on the
-      side. Open to new opportunities.
-    </span>
-  </div>
-  <div class="max-w-130 w-full">
-    <span class="max-w-140">
-      Before that, I worked on <b>digitalization projects</b> for both public and
-      private sectors, and contributed to <b
-        >frontend refactoring on large-scale applications</b
-      >.
-    </span>
-  </div>
-  <div class="grid gap-2">
-    <p class="text-gray-500">Find me on :</p>
-    <SocialNetworkLinks />
-  </div>
+	<div class="max-w-130 w-full">
+		<span class="max-w-140">
+			<b>Hi</b>, I'm <img
+				src="https://rayane-nekena.is-a.dev/assets/profile-8952f84b.webp"
+				alt="profile picture"
+				class="inline shrink-0 w-6 h-6 bg-center bg-cover"
+			/>
+			<b>Rayane</b>. Born and based in Antananarivo, Madagascar. Curious by
+			nature, I enjoy exploring how things are built and making them better.
+		</span>
+	</div>
+	<div class="max-w-130 w-full">
+		<span class="max-w-140">
+			I'm a <b>software engineer</b> with {experienceYears} years of experience
+			<b>building web and mobile applications</b>. I focus on scalable
+			systems, clean architecture, and performance.
+		</span>
+	</div>
+	<div class="max-w-130 w-full">
+		<span class="max-w-140">
+			Recently, I've been focusing on mobile applications with <b
+				>React Native</b
+			>. I work as a consultant at <b>Itwedo</b> and build a personal project on
+			the side. Open to new opportunities.
+		</span>
+	</div>
+	<div class="max-w-130 w-full">
+		<span class="max-w-140">
+			Before that, I worked on <b>digitalization projects</b> for both public and
+			private sectors, and contributed to <b
+				>frontend refactoring on large-scale applications</b
+			>.
+		</span>
+	</div>
+	<div class="grid gap-2">
+		<p class="text-gray-500">Find me on :</p>
+		<SocialNetworkLinks />
+	</div>
 </div>
