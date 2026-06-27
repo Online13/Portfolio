@@ -19,7 +19,7 @@ const articles = defineCollection({
 		title: z.string(),
 		slug: z.string(),
 		description: z.string(),
-		date: z.string(),
+		date: z.date(),
 	}),
 });
 

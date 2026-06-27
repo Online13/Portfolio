@@ -1,0 +1,181 @@
+---
+
+---
+
+<dialog
+	id="project-modal"
+	class="w-full h-full p-0 bg-transparent backdrop:bg-neutral-950/20 backdrop:backdrop-blur-xs"
+>
+	<div
+		class="relative flex flex-col gap-6 p-6 w-full max-w-lg rounded-2xl border border-neutral-200 bg-white shadow-2xl"
+	>
+		<button
+			id="modal-close"
+			type="button"
+			class="absolute right-5 top-5 rounded-full border border-neutral-100 w-6 aspect-square text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700"
+			aria-label="Fermer"
+		>
+			✕
+		</button>
+
+		<header class="space-y-1 pr-8">
+			<span
+				class="inline-flex rounded-md border border-neutral-200/60 bg-neutral-50 px-2.5 py-1 font-mono text-xs font-semibold text-neutral-800"
+			>
+				Project Detail
+			</span>
+
+			<h3
+				id="modal-title"
+				class="text-xl font-bold tracking-tight text-neutral-900"
+			>
+				<!-- Project Title -->
+			</h3>
+
+			<p
+				id="modal-description"
+				class="font-mono text-sm font-medium text-neutral-500"
+			>
+				<!-- Mini summary goes here -->
+			</p>
+		</header>
+
+		<section class="space-y-2">
+			<h4
+				class="font-mono text-xs font-semibold uppercase tracking-wider text-neutral-400"
+			>
+				Description
+			</h4>
+
+			<p id="modal-detail" class="text-sm leading-relaxed text-neutral-600">
+				<!-- Full markdown description goes here. -->
+			</p>
+		</section>
+
+		<section class="space-y-2.5">
+			<h4
+				class="font-mono text-xs font-semibold uppercase tracking-wider text-neutral-400"
+			>
+				Technologies
+			</h4>
+
+			<div id="modal-techs" class="flex flex-wrap gap-1.5">
+				<!-- Technologies will be populated here -->
+			</div>
+		</section>
+
+		<footer
+			class="mt-2 flex items-center gap-3 border-t border-neutral-100 pt-5"
+		>
+			<a
+				id="modal-link"
+				href="#"
+				target="_blank"
+				rel="noreferrer"
+				class="flex-1 rounded-xl bg-neutral-900 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-neutral-800"
+			>
+				Voir sur GitHub
+			</a>
+
+			<button
+				id="modal-close-secondary"
+				type="button"
+				class="flex-1 rounded-xl border border-neutral-200 py-3 text-sm font-semibold text-neutral-600 transition-colors hover:bg-neutral-50"
+			>
+				Fermer
+			</button>
+		</footer>
+	</div>
+</dialog>
+<style>
+	dialog[open] {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>
+<script>
+	interface Project {
+		slug: string;
+		title: string;
+		description: string;
+		full_description: string;
+		technologies: string[];
+		link: string;
+	}
+
+	function openModal(project: Project) {
+		const modal = document.getElementById("project-modal");
+
+		const closeBtn = document.getElementById("modal-close");
+		const modalTitle = document.getElementById("modal-title");
+		const modalDescription = document.getElementById("modal-description");
+		const modalDetail = document.getElementById("modal-detail");
+		const modalTechs = document.getElementById("modal-techs");
+		const modalLink = document.getElementById("modal-link");
+
+		// Update modal content
+		if (modalTitle) modalTitle.textContent = project.title;
+		if (modalDescription) modalDescription.textContent = project.description;
+		if (modalDetail) modalDetail.textContent = project.full_description;
+		if (modalTechs) {
+			modalTechs.innerHTML = "";
+			project.technologies.forEach((tech) => {
+				const techSpan = document.createElement("span");
+				techSpan.className =
+					"inline-flex items-center rounded-md bg-neutral-100 px-2 py-0.5 text-xs font-medium text-neutral-800";
+				techSpan.textContent = tech;
+				modalTechs.appendChild(techSpan);
+			});
+		}
+		if (modalLink && modalLink instanceof HTMLAnchorElement) {
+			modalLink.href = project.link;
+		}
+
+		// Show modal
+		if (modal && modal instanceof HTMLDialogElement) {
+			modal.showModal();
+
+			if (closeBtn) {
+				closeBtn.addEventListener("click", () => {
+					modal.close();
+				});
+			}
+		}
+	}
+
+	const projectItems = document.querySelectorAll(".project-item");
+	for (const item of projectItems) {
+		if (!item || !(item instanceof HTMLElement)) continue;
+
+		const project: Project = {
+			slug: "",
+			title: "",
+			description: "",
+			full_description: "",
+			technologies: [],
+			link: "",
+		};
+
+		project.slug = item.dataset.slug || "";
+		project.link = item.dataset.link || "";
+		project.title = item.dataset.title || "";
+		project.description = item.dataset.description || "";
+
+		const fullDescElmt = item.querySelector(".project-full-desc");
+		if (fullDescElmt && fullDescElmt instanceof HTMLElement) {
+			project.full_description = fullDescElmt.innerHTML.trim();
+		}
+
+		const techElmt = item.querySelector(".projet-technos");
+		const technos = techElmt?.querySelectorAll("li");
+		(technos || []).forEach((tech) => {
+			const value = tech.textContent.trim();
+			project.technologies.push(value);
+		});
+
+		item.addEventListener("click", async () => {
+			openModal(project);
+		});
+	}
+</script>

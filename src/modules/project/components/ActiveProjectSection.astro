@@ -13,10 +13,7 @@ const projects = await getCollection("projects");
 		projects.length > 0 ? (
 			<div class="w-full grid grid-cols-2 gap-4">
 				{projects.map((project) => (
-					<ProjectCard
-						name={project.data.title}
-						description={project.data.description}
-					/>
+					<ProjectCard {...project.data} />
 				))}
 			</div>
 		) : (
