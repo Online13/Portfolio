@@ -1,13 +1,28 @@
 ---
-
+import SocialNetworkLinks from "@/modules/about/SocialNetworkLinks.astro";
 ---
 
 <footer
 	id="site-footer"
 	class="w-full h-[50vh] fixed bottom-0 left-0 z-10 flex justify-center py-8 bg-black text-white"
 >
-	<div class="w-full max-w-160 px-4">
-		<p class="text-sm">© This site was designed and developed by @Rayane</p>
+	<div class="w-full max-w-160">
+		<div class="w-full space-y-4 pt-12">
+			<div class="w-full flex flex-col">
+				<h2 class="text-2xl font-semibold">
+					Through code, simple ideas become something <u>alive</u>,
+					<br />
+					<span class="text-gray-300">
+						built into software that feels clear, useful, and human.
+					</span>
+				</h2>
+			</div>
+		</div>
+		<div class="pt-20">
+			<p class="text-sm">
+				© This site was designed and developed by @Rayane
+			</p>
+		</div>
 	</div>
 </footer>
 <script>
